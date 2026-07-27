@@ -20,20 +20,11 @@ android {
         targetSdk = 36
         versionCode = 7
         versionName = "1.3.0"
-defaultConfig {
-    applicationId = "com.ziegler.kighelper"
-    minSdk = 26
-    targetSdk = 36
-    versionCode = 7
-    versionName = "1.3.0"
-// 👇 将下面这几行插入到这里（versionName 的下一行）
-    ndk {
-        abiFilters.add("armeabi-v7a")
-    }
 
-    testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-    resConfigs("zh", "ja", "en")
-}
+        // 👇 这里是新增的 armeabi-v7a 配置
+        ndk {
+            abiFilters.add("armeabi-v7a")
+        }
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         resConfigs("zh", "ja", "en")
@@ -56,10 +47,7 @@ defaultConfig {
         release {
             isMinifyEnabled = true
             isShrinkResources = true
-            //ndk {
-                //noinspection ChromeOsAbiSupport
-              //  abiFilters += "arm64-v8a"
-            //}
+            // 👇 已删除原来的 arm64-v8a 配置
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -116,7 +104,6 @@ dependencies {
     implementation(libs.coil.compose)
     implementation(libs.compose.cropper)
     implementation(files("libs/sherpa-onnx-1.13.2.aar"))
-
 
     // Hilt
     implementation(libs.hilt.android)
