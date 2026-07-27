@@ -48,6 +48,16 @@
         android:enableOnBackInvokedCallback="true"
         android:theme="@style/Theme.KigHelper"
         tools:targetApi="33">
+        <!-- 告诉系统这是手表应用，启用兼容性缩放 -->
+<uses-feature android:name="android.hardware.type.watch" android:required="false" />
+
+<!-- 强制支持小屏幕，禁止系统过度放大 -->
+<supports-screens
+    android:smallScreens="true"
+    android:normalScreens="false"
+    android:largeScreens="false"
+    android:xlargeScreens="false"
+    android:anyDensity="true" />
 
         <!-- BroadcastReceiver 用于处理通知中的操作 -->
         <receiver
