@@ -20,6 +20,20 @@ android {
         targetSdk = 36
         versionCode = 7
         versionName = "1.3.0"
+defaultConfig {
+    applicationId = "com.ziegler.kighelper"
+    minSdk = 26
+    targetSdk = 36
+    versionCode = 7
+    versionName = "1.3.0"
+// 👇 将下面这几行插入到这里（versionName 的下一行）
+    ndk {
+        abiFilters.add("armeabi-v7a")
+    }
+
+    testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+    resConfigs("zh", "ja", "en")
+}
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         resConfigs("zh", "ja", "en")
@@ -42,10 +56,10 @@ android {
         release {
             isMinifyEnabled = true
             isShrinkResources = true
-            ndk {
+            //ndk {
                 //noinspection ChromeOsAbiSupport
-                abiFilters += "arm64-v8a"
-            }
+              //  abiFilters += "arm64-v8a"
+            //}
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
